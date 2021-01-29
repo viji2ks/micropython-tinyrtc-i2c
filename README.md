@@ -30,6 +30,15 @@ SQ  | Square Wave     | Optional square wave or logic level output
 # 80 == 0x50 == AT24C32N EEPROM
 # 104 == 0x68 == DS1307
 
+micropython usage
+# VCC-GND ESP8266 SCL(PIN5),SDA(PIN4)
+>>> from machine import I2C, Pin
+>>> i2c = I2C(scl=Pin(5), sda=Pin(4))
+>>> i2c.scan()
+[80, 104]
+
+
+
 >>> import ds1307
 >>> ds = ds1307.DS1307(i2c)
 ds.datetime()
@@ -266,6 +275,17 @@ A8 (I2C3 SCL) | SCL
 C9 (I2C3 SDA) | SDA
 3V3           | VCC
 GND           | GND
+
+## Connections
+
+ESP8266| TinyRTC I2C module
+------------- | ----------------------
+A9 (any pin)  | DS
+5 (I2C3 SCL) | SCL
+5 (I2C3 SDA) | SDA
+3V3           | VCC
+GND           | GND
+
 
 ## Links
 
